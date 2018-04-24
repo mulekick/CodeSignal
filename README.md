@@ -24,6 +24,7 @@ Please note that for each solution you'll find 2 files bearing the same name, wi
 1. All the arcade mode solutions are correct and have passed all visible and hidden tests 
 2. All the user submitted challenges solutions are correct and scored 300/300
 3. All the company bots challenges solutions are correct and all scored 300/300 except Codefights round 3 and Kikbot round 1 (which have nevertheless beaten the bots)
+4. All the solutions are written with respect to the challenge's core technical matter (for instance, solutions to bitwise-related challenges are written using bitwise operations, not string conversion and array manipulation)
 
 ## My Codefights profile :
 
