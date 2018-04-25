@@ -10,7 +10,7 @@ like0hn0 = grid => {
 	};
 	const chk = function(x, y) {
 		let sum = 0;
-        let m = Object.assign({}, mvs);
+		let m = Object.assign({}, mvs);
 		for (dir in m) {
 			let t = mov[dir](x, y, m[dir]);
 			while(t > 0) t = mov[dir](x, y, ++m[dir]);
@@ -18,7 +18,7 @@ like0hn0 = grid => {
 		}
 		return grid[y][x] === sum;
 	}
-    return grid.every((c, y) => c.every((v, x) => v === 0 ? true : chk(x, y)));
+	return grid.every((c, y) => c.every((v, x) => v === 0 ? true : chk(x, y)));
 }
 */
 //SEE ABOVE FOR CLEAN CODE AND BELOW FOR GARBAGE
@@ -32,8 +32,8 @@ like0hn0 = g => {
 		R:(x, y, m) => f(x + m, y)
 	}
 	h = function(x, y) {
-        s = 0;
-        m = Object.assign({}, e)
+		s = 0;
+		m = Object.assign({}, e)
 		for (a in m) {
 			t = o[a](x, y, m[a])
 			while(t > 0) t = o[a](x, y, ++m[a])
@@ -41,5 +41,5 @@ like0hn0 = g => {
 		}
 		return g[y][x] == s
 	}
-    return g.every((c, y) => c.every((v, x) => v == 0 ? 1 : h(x, y)))
+	return g.every((c, y) => c.every((v, x) => v == 0 ? 1 : h(x, y)))
 }
