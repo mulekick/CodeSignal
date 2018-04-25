@@ -1,5 +1,5 @@
 /*
-like0hn0 = (grid) => {	
+like0hn0 = grid => {	
 	const dir = ["U","D","L","R"];
 	const mvs = {U:1,D:1,L:1,R:1};
 	const val = (x, y) => !grid[y] || !grid[y][x] ? - 1 : 1; 
@@ -22,7 +22,7 @@ like0hn0 = (grid) => {
 }
 */
 //SEE ABOVE FOR CLEAN CODE AND BELOW FOR GARBAGE
-like0hn0 = (g) => {	
+like0hn0 = g => {	
 	d = ["U","D","L","R"]
 	e = {U:1,D:1,L:1,R:1}
 	f = (x, y) => !g[y] || !g[y][x] ? - 1 : 1
