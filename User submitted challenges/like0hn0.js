@@ -8,7 +8,7 @@ like0hn0 = grid => {
 		L:(x, y, m) => val(x - m, y),
 		R:(x, y, m) => val(x + m, y)
 	};
-	const chk = function(x, y) {
+	const chk = (x, y) => {
 		let sum = 0;
 		let m = Object.assign({}, mvs);
 		for (dir in m) {
@@ -31,7 +31,7 @@ like0hn0 = g => {
 		L:(x, y, m) => f(x - m, y),
 		R:(x, y, m) => f(x + m, y)
 	}
-	h = function(x, y) {
+	h = (x, y) => {
 		s = 0;
 		m = Object.assign({}, e)
 		for (a in m) {
