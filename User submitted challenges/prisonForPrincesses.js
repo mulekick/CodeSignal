@@ -12,16 +12,15 @@ const reorder = (arr, e) => {
     return arr;
 }
 prisonForPrincesses = (cells, princesses, entrance) => {		
-	var result = [], hostages, occupation, cell, r;
+	var result = [], hostages, cell;
+	cells = reorder(cells.map((x, i) => [x, ++i]), entrance);
 	while (princesses[0]) {		
-		hostages = princesses.shift();			
-		occupation = reorder(cells.map((x, i) => [x - hostages, ++i]), entrance);
-		cell = occupation.findIndex(x => x[0] === 0);
-		cell < 0 ? cell = occupation.findIndex(x => x[0] > 0) : false;
+		hostages = princesses.shift();		
+		cell = cells.findIndex(x => x[0] - hostages === 0);	
+		cell < 0 ? cell = cells.findIndex(x => x[0] - hostages > 0) : false;
 		if (cell >= 0) {
-			r = occupation[cell][1];
-			cells[r - 1] = -1;
-			result.push(r);
+			cells[cell][0] = -1;
+			result.push(cells[cell][1]);
 			continue;
 		}
 		result.push(-1);
