@@ -8,5 +8,5 @@ stringsConstruction = (a, b) => {
 		let t = Math.floor(ob[p] / oa[p]);
 		t < n ? n = t : false;
 	}	
-	return k(ob).length === 0 || k(ob).length !== k(oa).length ? 0 : n;
+	return k(ob).length !== k(oa).length ? 0 : n;
 }
