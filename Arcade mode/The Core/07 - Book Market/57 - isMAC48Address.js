@@ -1,5 +1,10 @@
 'use strict'
 isMAC48Address = s => {
+    const p = s.match(/(\d|[a-f]){2}[-](\d|[a-f]){2}[-](\d|[a-f]){2}[-](\d|[a-f]){2}[-](\d|[a-f]){2}[-](\d|[a-f]){2}/gi);
+    return p === null ? false : p[0] === s && p[0].length === s.length;
+}
+/*
+isMAC48Address = s => {
 	const a = s.split("-");
 	const check = x => {
 		let r = typeof parseInt(x, 16) === "number";
@@ -11,3 +16,4 @@ isMAC48Address = s => {
 	}
 	return a.length == 6 && a.every(x => check(x))
 }
+*/
