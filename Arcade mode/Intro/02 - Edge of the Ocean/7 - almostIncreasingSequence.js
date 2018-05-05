@@ -9,3 +9,21 @@ function almostIncreasingSequence(sequence) {
 	}
 	return true
 }
+
+/*
+function almostIncreasingSequence(sequence) {	
+    var clone;
+    var counter;
+    for (counter = 0; counter < sequence.length; counter++) {
+        clone = sequence.slice(0);
+        clone.splice(counter, 1);
+        if (clone.every(function(currentValue, index, arr){
+            if (index == 0) {return true}
+            return currentValue > arr[index - 1];
+        })) {
+            return true;
+        }
+    }
+    return false;
+}
+*/
