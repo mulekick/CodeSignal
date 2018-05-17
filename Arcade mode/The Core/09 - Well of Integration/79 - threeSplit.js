@@ -1,11 +1,11 @@
 'use strict'
 threeSplit = a => {	
 	const l = a.length;	
-	var s1 = 0, s3, a3 = a.reduce((r, x) => r += x, 0), c = 0;	
+	var s1 = 0, s2, s3, a3 = a.reduce((r, x) => r += x, 0), c = 0;	
 	for (let i = 0; i < l - 2; i++) {
-		s1 += a[i],	a3 -= a[i],	s2 = 0,	s3 = a3;
+		s1 += a[i], a3 -= a[i], s2 = 0, s3 = a3;
 		for (let j = i + 1; j < l - 1; j++) {
-			s2 += a[j],	s3 -= a[j];
+			s2 += a[j], s3 -= a[j];
 			if (s1 === s2 && s2 === s3) c++;
 		}
 	}
