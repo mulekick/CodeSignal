@@ -22,10 +22,10 @@ amazonCheckmate = (k, a) => {
 	iuka = ([x, y]) => typeof kmvs.find(c => c[0] === x && c[1] === y) !== "undefined",
 	knm = (x, y) => [[x + 1, y + 2], [x + 1, y - 2], [x + 2, y + 1], [x + 2, y - 1], [x - 1, y + 2], [x - 1, y - 2], [x - 2, y + 1], [x - 2, y - 1]],
 	aknm = knm(xa, ya).reduce((r, v) => v.every(t => t > 0 && t < 9 ) ? (r.push(v), r) : r, []),
-	sfab = ([x, y]) => (xa - x) / (ya - y) === 1 ? (xk - x) / (yk - y) === 1 && (xa > x ? xk > x && xa > xk : xk < x && xa < xk) :
-					   (xa - x) / (ya - y) === -1 ? (xk - x) / (yk - y) === -1 && (xa < x ? xk < x && xa < xk : xk > x && xa > xk) : true,
-	sfar = ([x, y]) => x === xa ? xk === xa && (ya > y ? yk > y && ya > yk : yk < y && ya < yk) :
-					   y === ya ? yk === ya && (xa > x ? xk > x && xa > xk : xk < x && xa < xk) : true,
+	sfab = ([x, y]) =>	(xa - x) / (ya - y) === 1 ? (xk - x) / (yk - y) === 1 && (xa > x ? xk > x && xa > xk : xk < x && xa < xk) :
+						(xa - x) / (ya - y) === -1 ? (xk - x) / (yk - y) === -1 && (xa < x ? xk < x && xa < xk : xk > x && xa > xk) : true,
+	sfar = ([x, y]) =>	x === xa ? xk === xa && (ya > y ? yk > y && ya > yk : yk < y && ya < yk) :
+						y === ya ? yk === ya && (xa > x ? xk > x && xa > xk : xk < x && xa < xk) : true,
 	sfak = ([x, y]) => typeof aknm.find(c => c[0] === x && c[1] === y) === "undefined",
 	iuaa = ([x, y]) => ((sfab([x, y]) && sfar([x, y]) && sfak([x, y])) || (x === xa && y === ya)) === false;
 
