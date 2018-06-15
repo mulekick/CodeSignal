@@ -20,7 +20,7 @@ amazonCheckmate = (k, a) => {
 	},
 	kmvs = (n = gmvs([xk, yk]), n.push([xk, yk]), n),
 	iuka = ([x, y]) => typeof kmvs.find(c => c[0] === x && c[1] === y) !== "undefined",
-	knm = (x, y) => [[x + 1, y + 2], [x + 1, y - 2], [x + 2, y + 1], [x + 2, y - 1], [x - 1, y + 2], [x - 1, y - 2],	[x - 2, y + 1], [x - 2, y - 1]],
+	knm = (x, y) => [[x + 1, y + 2], [x + 1, y - 2], [x + 2, y + 1], [x + 2, y - 1], [x - 1, y + 2], [x - 1, y - 2], [x - 2, y + 1], [x - 2, y - 1]],
 	aknm = knm(xa, ya).reduce((r, v) => v.every(t => t > 0 && t < 9 ) ? (r.push(v), r) : r, []),
 	sfab = ([x, y]) => (xa - x) / (ya - y) === 1 ? (xk - x) / (yk - y) === 1 && (xa > x ? xk > x && xa > xk : xk < x && xa < xk) :
 					   (xa - x) / (ya - y) === -1 ? (xk - x) / (yk - y) === -1 && (xa < x ? xk < x && xa < xk : xk > x && xa > xk) : true,
