@@ -12,22 +12,52 @@ iuaa ==> "is position under amazon attack ?"
 'use strict'
 amazonCheckmate = (k, a) => {	
 	const gc = c => [c[0].charCodeAt() - 0x60, parseInt(c[1])],	[xk, yk] = gc(k), [xa, ya] = gc(a),
+	knm = (x, y) => [	[x + 1, y + 2], [x + 1, y - 2],
+						[x + 2, y + 1], [x + 2, y - 1],
+						[x - 1, y + 2], [x - 1, y - 2],
+						[x - 2, y + 1], [x - 2, y - 1]	],
 	gmvs = ([x, y]) => {
-		let nb = [[[x - 1, y + 1],[x, y + 1], [x + 1, y + 1]], [[x - 1, y], [x + 1, y]], [[x - 1, y - 1], [x, y - 1], [x + 1, y - 1]]];
-		y === 1 ? nb.pop() : y === 8 ? nb.shift() : false;
-		x === 8 ? (nb = nb.map(v => (v.pop(), v))) : x === 1 ? (nb = nb.map(v => (v.shift(), v))) : false;
+		let nb =[	[	[x - 1, y + 1], [x    , y + 1], [x + 1, y + 1]	], 
+					[	[x - 1, y    ],                 [x + 1, y    ]	], 
+					[	[x - 1, y - 1], [x    , y - 1], [x + 1, y - 1]	]];
+		y === 1 ? 
+			nb.pop() : 
+		y === 8 ? 
+			nb.shift() : 
+			false;
+		x === 8 ? 
+			nb = nb.map(v => (v.pop(), v)) : 
+		x === 1 ? 
+			nb = nb.map(v => (v.shift(), v)) : 
+			false;
 		return nb.reduce((r, v) => (v.forEach(e => r.push(e)), r), [])
 	},
 	kmvs = (n = gmvs([xk, yk]), n.push([xk, yk]), n),
-	iuka = ([x, y]) => typeof kmvs.find(c => c[0] === x && c[1] === y) !== "undefined",
-	knm = (x, y) => [[x + 1, y + 2], [x + 1, y - 2], [x + 2, y + 1], [x + 2, y - 1], [x - 1, y + 2], [x - 1, y - 2], [x - 2, y + 1], [x - 2, y - 1]],
 	aknm = knm(xa, ya).reduce((r, v) => v.every(t => t > 0 && t < 9 ) ? (r.push(v), r) : r, []),
-	sfab = ([x, y]) => (xa - x) / (ya - y) === 1 ? (xk - x) / (yk - y) === 1 && (xa > x ? xk > x && xa > xk : xk < x && xa < xk) :
-					   (xa - x) / (ya - y) === -1 ? (xk - x) / (yk - y) === -1 && (xa < x ? xk < x && xa < xk : xk > x && xa > xk) : true,
-	sfar = ([x, y]) => x === xa ? xk === xa && (ya > y ? yk > y && ya > yk : yk < y && ya < yk) :
-					   y === ya ? yk === ya && (xa > x ? xk > x && xa > xk : xk < x && xa < xk) : true,
-	sfak = ([x, y]) => typeof aknm.find(c => c[0] === x && c[1] === y) === "undefined",
-	iuaa = ([x, y]) => ((sfab([x, y]) && sfar([x, y]) && sfak([x, y])) || (x === xa && y === ya)) === false;
+	iuka = ([x, y]) => 
+		typeof kmvs.find(c => c[0] === x && c[1] === y) !== "undefined",
+	sfak = ([x, y]) => 
+		typeof aknm.find(c => c[0] === x && c[1] === y) === "undefined",
+	sfab = ([x, y]) => (xa - x) / (ya - y) === 1 ? 
+							(xk - x) / (yk - y) === 1 && (xa > x ? 
+															xk > x && xa > xk : 
+															xk < x && xa < xk) :
+					   (xa - x) / (ya - y) === -1 ? 
+							(xk - x) / (yk - y) === -1 && (xa < x ? 
+															xk < x && xa < xk : 
+															xk > x && xa > xk) :
+							true,
+	sfar = ([x, y]) => x === xa ? 
+							xk === xa && (ya > y ? 
+											yk > y && ya > yk : 
+											yk < y && ya < yk) :
+					   y === ya ? 
+							yk === ya && (xa > x ? 
+											xk > x && xa > xk : 
+											xk < x && xa < xk) : 
+							true,
+	iuaa = ([x, y]) => 
+		((sfab([x, y]) && sfar([x, y]) && sfak([x, y])) || (x === xa && y === ya)) === false;
 
 	//Counters : checkmate, check, stalemate, default
 	var cm = 0, ch = 0, st = 0, df = 0;
