@@ -5,8 +5,14 @@ pawnRace = (w, b, m) => {
 	if (xw === xb && yw <= yb) return "draw";
 	while (true) {
 		if (yw >= yb || Math.abs(xw - xb) !== 1) {
-			let wrm = yw === 2 ? 5 : 8 - yw;
-			let brm = yb === 7 ? 5 : yb - 1;	
+			let wrm = 
+				yw === 2 ? 
+					5 : 
+					8 - yw;
+			let brm = 
+				yb === 7 ? 
+					5 : 
+					yb - 1;	
 			return wrm === brm ? 
 						mv === 0 ? "white" : "black" :
 						Math.min(wrm, brm) === wrm ? "white" : "black";
