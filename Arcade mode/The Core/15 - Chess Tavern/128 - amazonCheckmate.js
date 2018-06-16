@@ -38,14 +38,16 @@ amazonCheckmate = (k, a) => {
 		typeof kmvs.find(c => c[0] === x && c[1] === y) !== "undefined",
 	sfak = ([x, y]) => 
 		typeof aknm.find(c => c[0] === x && c[1] === y) === "undefined",
-	sfab = ([x, y]) => (xa - x) / (ya - y) === 1 ? 
-							(xk - x) / (yk - y) === 1 && (xa > x ? 
-															xk > x && xa > xk : 
-															xk < x && xa < xk) :
-					   (xa - x) / (ya - y) === -1 ? 
-							(xk - x) / (yk - y) === -1 && (xa < x ? 
-															xk < x && xa < xk : 
-															xk > x && xa > xk) :
+	sfab = ([x, y]) =>	(xa - x) / (ya - y) === 1 ? 
+							(xk - x) / (yk - y) === 1 && 
+								(xa > x ? 
+									xk > x && xa > xk : 
+									xk < x && xa < xk) :
+						(xa - x) / (ya - y) === -1 ? 
+							(xk - x) / (yk - y) === -1 && 
+								(xa < x ? 
+									xk < x && xa < xk : 
+									xk > x && xa > xk) :
 							true,
 	sfar = ([x, y]) => x === xa ? 
 							xk === xa && (ya > y ? 
