@@ -12,16 +12,14 @@ iuaa ==> "is position under amazon attack ?"
 'use strict'
 amazonCheckmate = (k, a) => {	
 	const gc = c => [c[0].charCodeAt() - 0x60, parseInt(c[1])],	[xk, yk] = gc(k), [xa, ya] = gc(a),
-	knm = (x, y) => [
-					[x + 1, y + 2], [x + 1, y - 2], [x + 2, y + 1], [x + 2, y - 1],
-					[x - 1, y + 2], [x - 1, y - 2],	[x - 2, y + 1], [x - 2, y - 1]
-					],
+	knm = (x, y) => 
+		[[x + 1, y + 2], [x + 1, y - 2], [x + 2, y + 1], [x + 2, y - 1],
+		[x - 1, y + 2], [x - 1, y - 2],	[x - 2, y + 1], [x - 2, y - 1]],
 	gmvs = ([x, y]) => {
-		let nb =[	
-				[[x - 1, y + 1], [x    , y + 1], [x + 1, y + 1]], 
+		let nb =
+			[	[[x - 1, y + 1], [x    , y + 1], [x + 1, y + 1]], 
 				[[x - 1, y    ],                 [x + 1, y    ]], 
-				[[x - 1, y - 1], [x    , y - 1], [x + 1, y - 1]]
-				];
+				[[x - 1, y - 1], [x    , y - 1], [x + 1, y - 1]]];
 		y === 1 ? 
 			nb.pop() : 
 		y === 8 ? 
@@ -41,29 +39,29 @@ amazonCheckmate = (k, a) => {
 	sfak = ([x, y]) => 
 		typeof aknm.find(c => c[0] === x && c[1] === y) === "undefined",
 	sfab = ([x, y]) =>	
-						(xa - x) / (ya - y) === 1 ? 
-							(xk - x) / (yk - y) === 1 && 
-								(xa > x ? 
-									xk > x && xa > xk : 
-									xk < x && xa < xk) :
-						(xa - x) / (ya - y) === -1 ? 
-							(xk - x) / (yk - y) === -1 && 
-								(xa < x ? 
-									xk < x && xa < xk : 
-									xk > x && xa > xk) :
-							true,
+		(xa - x) / (ya - y) === 1 ? 
+			(xk - x) / (yk - y) === 1 && 
+				(xa > x ? 
+					xk > x && xa > xk : 
+					xk < x && xa < xk) :
+		(xa - x) / (ya - y) === -1 ? 
+			(xk - x) / (yk - y) === -1 && 
+				(xa < x ? 
+					xk < x && xa < xk : 
+					xk > x && xa > xk) :
+			true,
 	sfar = ([x, y]) => 
-						x === xa ? 
-							xk === xa && 
-								(ya > y ? 
-									yk > y && ya > yk : 
-									yk < y && ya < yk) :
-						y === ya ? 
-							yk === ya && 
-								(xa > x ? 
-									xk > x && xa > xk : 
-									xk < x && xa < xk) : 
-							true,
+		x === xa ? 
+			xk === xa && 
+				(ya > y ? 
+					yk > y && ya > yk : 
+					yk < y && ya < yk) :
+		y === ya ? 
+			yk === ya && 
+				(xa > x ? 
+					xk > x && xa > xk : 
+					xk < x && xa < xk) : 
+			true,
 	iuaa = ([x, y]) => 
 		((sfab([x, y]) && sfar([x, y]) && sfak([x, y])) || (x === xa && y === ya)) === false;
 		
