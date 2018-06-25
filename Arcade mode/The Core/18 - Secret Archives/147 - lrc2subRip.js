@@ -15,7 +15,7 @@ lrc2subRip = (lrc, sl) => {
 			lrct2srt(li[0]) + " --> " + (
 				i === ll - 1 ?
 					sl + ",000" : 
-					lrct2srt(lrc[i + 1].split(" ")[0])
+					lrct2srt(lrc[i + 1].slice(0, 10))
 				),
 			li[1],
 			""
