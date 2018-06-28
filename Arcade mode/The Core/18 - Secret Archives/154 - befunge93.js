@@ -1,5 +1,75 @@
 /* ===================== FINAL VERSION ========================*/
 'use strict'
+befunge93 = p => new bf93exe(p).exec();
+const cmdlist = /[<>v^#_|+*%/!`:\\$.," @0-9-]/;
+class bf93dll {
+	constructor(p1, p2, p3, p4, p5, p6, p7, p8) {
+		this.prog = p1, this.posx = p2, this.posy = p3, this.vctr = p4,
+		this.stck = p5, this.outp = p6, this.cins = p7, this.inst = p8}
+	cntexec() {return this.inst !== "@" && this.cins < 1e+4 && this.outp.length < 100}
+	mvpntr() {
+		let [y, x] = [this.posy, this.posx];
+		y += this.vctr[0], x += this.vctr[1];
+		this.posx = 
+			x === this.prog[0].length ? 0 :
+			x === -1 ? this.prog[0].length - 1 : x ;	
+		this.posy = 
+			y === this.prog.length ? 0 :
+			y === -1 ? this.prog.length - 1 : y ;}
+	pop() {return this.stck.length === 0 ? 0 : this.stck.shift()}
+	push(v) {this.stck.unshift(v)}
+	out(v) {this.outp += v}
+	vctrs(v) {return { ">" : [0, 1], "<" : [0, -1], "v" : [1, 0], "^" : [-1, 0] }[v]}
+	executecmd() {
+		void {
+			">" : () => this.vctr = this.vctrs(">"), 
+			"<" : () => this.vctr = this.vctrs("<"), 
+			"^" : () => this.vctr = this.vctrs("^"), 
+			"v" : () => this.vctr = this.vctrs("v"), 
+			"#" : () => this.mvpntr(), 
+			"_" : () => this.vctr = this.vctrs(this.pop() === 0 ? ">" : "<"), 
+			"|" : () => this.vctr = this.vctrs(this.pop() === 0 ? "v" : "^"), 
+			"+" : () => this.push(Math.floor(((a, b) => a + b)(this.pop(), this.pop()))),
+			"-" : () => this.push(Math.floor(((a, b) => b - a)(this.pop(), this.pop()))), 
+			"*" : () => this.push(Math.floor(((a, b) => a * b)(this.pop(), this.pop()))),
+			"/" : () => this.push(Math.floor(((a, b) => b / a)(this.pop(), this.pop()))), 
+			"%" : () => this.push(Math.floor(((a, b) => b % a)(this.pop(), this.pop()))),
+			"!" : () => this.push(this.pop() === 0 ? 1 : 0), 
+			"`" : () => this.push(this.pop() < this.pop() ? 1 : 0),
+			":" : () => this.push(!this.stck[0] ? 0 : this.stck[0]), 
+			"\\" : () => {
+				let a, b; 
+				([a, b] = [this.pop(), this.pop()], this.push(a), this.push(b))		
+			},
+			"$" : () => this.pop(),
+			"." : () => this.out(Math.floor(1 * this.pop()) + " "), 
+			"," : () => this.out(String.fromCharCode(this.pop())),
+			"\"" : () => {
+				this.mvpntr(), 
+				this.inst = this.prog[this.posy][this.posx];
+				while(this.inst !== "\"") 							
+					this.push(this.inst.charCodeAt()), 
+					this.mvpntr(), 
+					this.inst = this.prog[this.posy][this.posx]
+			},
+			"n" : () => this.push(1 * this.inst),
+			"@" : () => {},
+			" " : () => {}
+		}[this.inst.match(cmdlist)[0].replace(/[0-9]/, "n")]()}	
+}
+class bf93exe extends bf93dll {
+	constructor(p) {
+		super(p, 0, 0, [], [], "", 0, ""), this.vctr = super.vctrs(">");
+	}
+	exec() {
+		while(super.cntexec())
+			this.inst = this.prog[this.posy][this.posx], super.executecmd(), 
+			this.cins += 1, super.mvpntr();
+		return this.outp;
+	}
+}
+/* ===================== SECOND WORKING VERSION ========================
+'use strict'
 befunge93 = p => {
 	var processor = new bf93exe(p);
 	return processor.exec();
@@ -92,6 +162,7 @@ class bf93exe extends bf93dll {
 		return this.outp;
 	}
 }
+*/
 /* ===================== FIRST WORKING VERSION ========================
 /*
 'use strict'
