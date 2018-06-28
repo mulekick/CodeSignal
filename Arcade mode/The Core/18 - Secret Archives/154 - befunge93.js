@@ -5,8 +5,8 @@ const cmdlist = /[<>v^#_|+*%/!`:\\$.," @0-9-]/;
 class bf93dll {
 	constructor(p1, p2, p3, p4, p5, p6, p7, p8) {
 		this.prog = p1, this.posx = p2, this.posy = p3, this.vctr = p4,
-		this.stck = p5, this.outp = p6, this.cins = p7, this.inst = p8}
-	cntexec() {return this.inst !== "@" && this.cins < 1e+5 && this.outp.length < 100}
+		this.stck = p5, this.outp = p6, this.ncmd = p7, this.cmnd = p8}
+	cntexec() {return this.cmnd !== "@" && this.ncmd < 1e+5 && this.outp.length < 100}
 	mvpntr() {
 		let [y, x] = [this.posy, this.posx];
 		y += this.vctr[0], x += this.vctr[1];
@@ -46,16 +46,16 @@ class bf93dll {
 			"," : () => this.out(String.fromCharCode(this.pop())),
 			"\"" : () => {
 				this.mvpntr(), 
-				this.inst = this.prog[this.posy][this.posx];
-				while(this.inst !== "\"") 							
-					this.push(this.inst.charCodeAt()), 
+				this.cmnd = this.prog[this.posy][this.posx];
+				while(this.cmnd !== "\"") 							
+					this.push(this.cmnd.charCodeAt()), 
 					this.mvpntr(), 
-					this.inst = this.prog[this.posy][this.posx]
+					this.cmnd = this.prog[this.posy][this.posx]
 			},
-			"n" : () => this.push(1 * this.inst),
+			"n" : () => this.push(1 * this.cmnd),
 			"@" : () => {},
 			" " : () => {}
-		}[this.inst.match(cmdlist)[0].replace(/[0-9]/, "n")]()}	
+		}[this.cmnd.match(cmdlist)[0].replace(/[0-9]/, "n")]()}	
 }
 class bf93exe extends bf93dll {
 	constructor(p) {
@@ -63,8 +63,8 @@ class bf93exe extends bf93dll {
 	}
 	exec() {
 		while(super.cntexec())
-			this.inst = this.prog[this.posy][this.posx], super.executecmd(), 
-			this.cins += 1, super.mvpntr();
+			this.cmnd = this.prog[this.posy][this.posx], super.executecmd(), 
+			this.ncmd += 1, super.mvpntr();
 		return this.outp;
 	}
 }
