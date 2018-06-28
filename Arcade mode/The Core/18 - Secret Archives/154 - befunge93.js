@@ -6,7 +6,7 @@ class bf93dll {
 	constructor(p1, p2, p3, p4, p5, p6, p7, p8) {
 		this.prog = p1, this.posx = p2, this.posy = p3, this.vctr = p4,
 		this.stck = p5, this.outp = p6, this.cins = p7, this.inst = p8}
-	cntexec() {return this.inst !== "@" && this.cins < 1e+4 && this.outp.length < 100}
+	cntexec() {return this.inst !== "@" && this.cins < 1e+5 && this.outp.length < 100}
 	mvpntr() {
 		let [y, x] = [this.posy, this.posx];
 		y += this.vctr[0], x += this.vctr[1];
@@ -16,8 +16,8 @@ class bf93dll {
 		this.posy = 
 			y === this.prog.length ? 0 :
 			y === -1 ? this.prog.length - 1 : y ;}
-	pop() {return this.stck.length === 0 ? 0 : this.stck.shift()}
-	push(v) {this.stck.unshift(v)}
+	pop() {return this.stck.length === 0 ? 0 : this.stck.pop()}
+	push(v) {this.stck.push(v)}
 	out(v) {this.outp += v}
 	vctrs(v) {return { ">" : [0, 1], "<" : [0, -1], "v" : [1, 0], "^" : [-1, 0] }[v]}
 	executecmd() {
@@ -36,7 +36,7 @@ class bf93dll {
 			"%" : () => this.push(Math.floor(((a, b) => b % a)(this.pop(), this.pop()))),
 			"!" : () => this.push(this.pop() === 0 ? 1 : 0), 
 			"`" : () => this.push(this.pop() < this.pop() ? 1 : 0),
-			":" : () => this.push(!this.stck[0] ? 0 : this.stck[0]), 
+			":" : () => this.push(!this.stck[this.stck.length - 1] ? 0 : this.stck[this.stck.length - 1]), 
 			"\\" : () => {
 				let a, b; 
 				([a, b] = [this.pop(), this.pop()], this.push(a), this.push(b))		
