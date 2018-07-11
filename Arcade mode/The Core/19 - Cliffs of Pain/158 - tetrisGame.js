@@ -34,7 +34,7 @@ tetrisGame = p => {
 				for (let i in fp) fp[i] = c2b(fp[i]);			
 				//For each s between 0 and max shift
 				for (let s = 0; s <= maxs; s++) {
-					//For each i such as (i in P) P[i] >>>= s
+					//For each i such as (i in FP) FP[i] >>>= s
 					for (let i in fp) fp[i] >>>= s === 0 ? 0 : 1;
 					//If for each i such as (i in FP) ==> FLD[(l + i)] | FP[i] === FLD[(l + i)] ^ FP[i]
 					// + Handle the case of the pieces having to fall straight ahead without sliding...
@@ -48,7 +48,7 @@ tetrisGame = p => {
 					})) {
 						//flag fits = true
 						fits = true;
-						//For each i such as (i in P) and ((l + i) in F) F[(l + i)] ^= P[i]
+						//For each i such as (i in FP) and ((l + i) in FLD) FLD[(l + i)] ^= FP[i]
 						for (let i in fp) fld[(l + 1 * i)] ^= fp[i];				
 					};
 					//Exit for				
@@ -63,14 +63,14 @@ tetrisGame = p => {
 			if (fits) fsave[r] = [fld, l, fp.length];		
 		//End for each
 		}
-		//For each saved FLD value, extract the number of blocks per FLD line for current rotation 
+		//For each saved FLD value, extract the total number of blocks in FLD lines occupied by FP
 		fsave.sort((a, b) => {
 			let ali = a[1], bli = b[1], ale = ali + a[2], ble = bli + b[2], at = 0, bt = 0;
 			for (let c = ali; c < ale; c++) at += a[0][c].toString(2).match(/[1]+/g).join("").length;
 			for (let c = bli; c < ble; c++) bt += b[0][c].toString(2).match(/[1]+/g).join("").length;
 			return bt - at;
 		});	
-		//Find the FLD value for which the maximum number of blocks are occupied in lines FLD.length, FLD.length - 1, etc...
+		//Find the FLD value for which the number of blocks in the occupied lines is maximal...
 			//Once found, F = FLD (optimal position found)	
 		f = fsave[0][0];		
 		//For each i such as (i in F) and F[i] = 1111111111
