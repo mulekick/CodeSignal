@@ -1,12 +1,12 @@
 'use strict'
 function numberOfClans(d, k) {
-	var t = [];
-	for (let i = 1; i <= k; i++) t.push(d.map(x => i % x === 0));
-	return t.filter((x, i, a) => a.findIndex(y => {
-		for (v in x)
-			if (y[v] !== x[v]) return false;
-		return true;
-	}) === i).length;
+    var t = [];
+    for (let i = 1; i <= k; i++) t.push(d.map(x => i % x === 0));
+    return t.filter((x, i, a) => a.findIndex(y => {
+        for (v in x)
+            if (y[v] !== x[v]) return false;
+        return true;
+    }) === i).length;
 }
 
 /*

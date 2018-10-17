@@ -1,5 +1,5 @@
 'use strict'
 findEmailDomain = a => {
-	var pos = a.lastIndexOf("@");
-	return a.substr(++pos);
+    var pos = a.lastIndexOf("@");
+    return a.substr(++pos);
 }
