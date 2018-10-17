@@ -31,40 +31,40 @@ Example
     the output should be bankRequests(accounts, requests) = [-2].
 
     After the first request, accounts becomes equal to [20, 1000, 900, 40, 90], but the second one 
-	turns it into [-10, 1030, 900, 40, 90], which is invalid. Thus, the second request is invalid, and the answer is [-2]. 
-	Note that the last request is also invalid, but it shouldn't be included in the answer.
-*/	
-	
+    turns it into [-10, 1030, 900, 40, 90], which is invalid. Thus, the second request is invalid, and the answer is [-2]. 
+    Note that the last request is also invalid, but it shouldn't be included in the answer.
+*/  
+    
 function bankRequests(accounts, requests) {
-	var request;
-	var i;
-	for (i = 0; i < requests.length; i++) {
-		request = requests[i].split(" ").map((x,i) => (i == 0) ? x : parseInt(x));
-		switch (request[0]) {		
-			case "withdraw" :
-				if (typeof accounts[request[1] - 1] == "undefined") {return [0 - Math.abs(i + 1)]}
-				if (request[2] > accounts[request[1] - 1]) {
-					return [0 - Math.abs(i + 1)];
-				} else {
-					accounts[request[1] - 1] -= request[2];
-				}
-			break;
-			case "transfer" :
-				if (typeof accounts[request[1] - 1] == "undefined" || typeof accounts[request[2] - 1] == "undefined") {return [0 - Math.abs(i + 1)]}
-				if (request[3] > accounts[request[1] - 1]) {
-					return [0 - Math.abs(i + 1)];
-				} else {
-					accounts[request[1] - 1] -= request[3];
-					accounts[request[2] - 1] += request[3];
-				}
-			break;
-			case "deposit" :
-				if (typeof accounts[request[1] - 1] == "undefined") {return [0 - Math.abs(i + 1)]}
-				accounts[request[1] - 1] += request[2];
-			break;
-			default :
-			break;		
-		}
-	}
-	return accounts;
+    var request;
+    var i;
+    for (i = 0; i < requests.length; i++) {
+        request = requests[i].split(" ").map((x,i) => (i == 0) ? x : parseInt(x));
+        switch (request[0]) {       
+            case "withdraw" :
+                if (typeof accounts[request[1] - 1] == "undefined") {return [0 - Math.abs(i + 1)]}
+                if (request[2] > accounts[request[1] - 1]) {
+                    return [0 - Math.abs(i + 1)];
+                } else {
+                    accounts[request[1] - 1] -= request[2];
+                }
+            break;
+            case "transfer" :
+                if (typeof accounts[request[1] - 1] == "undefined" || typeof accounts[request[2] - 1] == "undefined") {return [0 - Math.abs(i + 1)]}
+                if (request[3] > accounts[request[1] - 1]) {
+                    return [0 - Math.abs(i + 1)];
+                } else {
+                    accounts[request[1] - 1] -= request[3];
+                    accounts[request[2] - 1] += request[3];
+                }
+            break;
+            case "deposit" :
+                if (typeof accounts[request[1] - 1] == "undefined") {return [0 - Math.abs(i + 1)]}
+                accounts[request[1] - 1] += request[2];
+            break;
+            default :
+            break;      
+        }
+    }
+    return accounts;
 }

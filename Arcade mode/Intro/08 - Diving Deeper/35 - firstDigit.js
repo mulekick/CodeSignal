@@ -1,3 +1,3 @@
 function firstDigit(inputString) {
-	return inputString.match(/\d/)[0];
+    return inputString.match(/\d/)[0];
 }

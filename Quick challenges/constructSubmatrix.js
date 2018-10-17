@@ -16,20 +16,20 @@ constructSubmatrix(matrix, rowsToDelete, columnsToDelete) = [[0, 2],
                                                              [0, 5]]
 */
 function constructSubmatrix(matrix, rowsToDelete, columnsToDelete) {
-	var submatrix = [];
-	return matrix.reduce(function(result, val, index, arr){
-		if (rowsToDelete.indexOf(index) == -1) {
-			var i;
+    var submatrix = [];
+    return matrix.reduce(function(result, val, index, arr){
+        if (rowsToDelete.indexOf(index) == -1) {
+            var i;
             var j = [];
-			for (i = 0; i < val.length; i++) {                
-				if (columnsToDelete.indexOf(i) == -1) {
+            for (i = 0; i < val.length; i++) {                
+                if (columnsToDelete.indexOf(i) == -1) {
                     j.push(val[i]);
-				}
-			}				
-			result.push(j);
-			return result;
-		} else {		
-			return result;
-		}	
-	}, submatrix);
+                }
+            }               
+            result.push(j);
+            return result;
+        } else {        
+            return result;
+        }   
+    }, submatrix);
 }

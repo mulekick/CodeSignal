@@ -21,34 +21,34 @@ Input/Output
 */
 
 function checkSequence(arr, start, end) {
-	var test = function(a, b, c){
-		condition1 = ((b - a) > 0 && (b - c) > 0);
-		condition2 = ((b - a) < 0 && (b - c) < 0);
-		return (condition1 || condition2) ? true : false ;
-	}
-	var result = true;
-	while (start < end - 1) {
-		result = result && test(arr[start], arr[start + 1], arr[start + 2]);
-		start++;
-	}
-	return result;
+    var test = function(a, b, c){
+        condition1 = ((b - a) > 0 && (b - c) > 0);
+        condition2 = ((b - a) < 0 && (b - c) < 0);
+        return (condition1 || condition2) ? true : false ;
+    }
+    var result = true;
+    while (start < end - 1) {
+        result = result && test(arr[start], arr[start + 1], arr[start + 2]);
+        start++;
+    }
+    return result;
 }
 
 function zigzag(array) {
-	if (array.length == 1) {return 1};
-	if (array.length == 2 && array[0] != array[1]) {return 2};
-	if (array.length == 2 && array[0] == array[1]) {return 1};
-	var start = 0;
-	var end = 0;
-	var length = 1;
-	while (start < array.length) {		
-		if (checkSequence(array, start, end)) {
-			end++;
-		} else {
-			if (end - start > length) {length = end - start}
-			end--;
-			start = end;
-		}
-	}
-	return length;
+    if (array.length == 1) {return 1};
+    if (array.length == 2 && array[0] != array[1]) {return 2};
+    if (array.length == 2 && array[0] == array[1]) {return 1};
+    var start = 0;
+    var end = 0;
+    var length = 1;
+    while (start < array.length) {      
+        if (checkSequence(array, start, end)) {
+            end++;
+        } else {
+            if (end - start > length) {length = end - start}
+            end--;
+            start = end;
+        }
+    }
+    return length;
 }
