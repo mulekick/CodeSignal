@@ -1,6 +1,6 @@
 # Codefight solutions repository
 
-I've solved a lot of problems featured on **Codefights.com**. I will use this repository to store, organize and manage all the code I've produced while doing so.
+I've solved a lot of problems featured on **CodeSignal.com**. I will use this repository to store, organize and manage all the code I've produced while doing so.
 
 ## Up until now, all the solutions are written in Javascript
 
@@ -30,6 +30,6 @@ The above does not apply to the quick challenges. For these, problem description
 4. All the quick challenges solutions are correct and have passed all visible and hidden tests 
 5. All the solutions are written with respect to the challenge's core technical matter (for instance, solutions to bitwise-related challenges are written using bitwise operations, not string conversion and array manipulation)
 
-## My Codefights profile :
+## My CodeSignal profile :
 
-https://codefights.com/profile/mulekick
+https://app.codesignal.com/profile/mulekick
