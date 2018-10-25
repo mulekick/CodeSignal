@@ -1,4 +1,4 @@
-# Codefight solutions repository
+# CodeSignal solutions repository
 
 I've solved a lot of problems featured on **CodeSignal.com**. I will use this repository to store, organize and manage all the code I've produced while doing so.
 
