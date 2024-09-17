@@ -2,7 +2,7 @@
 
 I've solved a lot of problems featured on **CodeSignal.com**. I will use this repository to store, organize and manage all the code I've produced while doing so.
 
-## Up until now, all the solutions are written in Javascript
+## Up until now, all the solutions are written in Javascript / Typescript
 
 This may change in the future.
 
@@ -17,8 +17,8 @@ I will include all the solutions I've written for :
 
 Please note that for each solution you'll find 2 files bearing the same name, with different extensions :
 
-- a *.js file containing the code of the solution
-- a *.pdf file containing the description of the problem.
+- a *.js / *.ts file containing the code of the solution
+- a *.pdf / *.png file containing the description of the problem.
 
 The above does not apply to the quick challenges. For these, problem description will be added as a commentary in the *.js file.
 

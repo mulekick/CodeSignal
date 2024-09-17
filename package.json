@@ -1,0 +1,24 @@
+{
+    "name": "codesignal",
+    "version": "1.0.0",
+    "description": "CodeSignal (formerly \"CodeFights\") solutions repository.",
+    "type": "module",
+    "scripts": {
+        "list": "npx tsc --listFilesOnly | sort",
+        "typecheck": "npx tsc && echo 'type checking was successful'",
+        "lint": "npx eslint . --ext .tsx,.ts"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@mulekick/eslint-config-muleslint": "^1.0.3",
+        "@typescript-eslint/eslint-plugin": "^8.6.0",
+        "@typescript-eslint/parser": "^8.6.0",
+        "typescript": "^5.6.2"
+    },
+    "engines": {
+        "node": ">= 20.17.0",
+        "npm": ">= 10.8.3"
+    },
+    "author": "mulekick <moolekick@gmail.com> (https://github.com/mulekick)",
+    "license": "MIT"
+}

@@ -1,0 +1,18 @@
+{
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "@mulekick/eslint-config-muleslint"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [ "@typescript-eslint" ],
+    "rules": {
+        // ...
+        "max-depth": "off",
+        "newline-per-chained-call": "off",
+        "arrow-body-style": "off",
+        "no-return-assign": "off",
+        "no-param-reassign": "off",
+        "no-undefined": "off",
+        "no-continue": "off"
+    }
+}
